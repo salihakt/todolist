@@ -1,0 +1,57 @@
+function getData() {
+    return new Promise((resolve)=>{
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            
+            if (xhttp.readyState === 4 && xhttp.status == 200) {
+                
+                var users = JSON.parse(this.responseText)
+                let output=
+                `<tr>
+                <th scope="col">User </th>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Completed</th>
+              </tr>  `;
+                for(let i=0;i<users.length;i++){
+                    var checked 
+                    if(users[i].completed) checked='checked'
+                    else checked=''
+                    output+=`<tr border="2px">
+                    <td scope="col">${users[i].userId}</td>
+                    <td scope="col">${users[i].id}</td>
+                    <td scope="col">${users[i].title}</td>
+                    <td scope="col"><input type="checkbox" name="name1" data-index="${i}" ${checked}/>&nbsp;</td>
+                  </tr>`  
+                }
+              
+                resolve(output)
+            }
+        }
+    
+        xhttp.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+        xhttp.send();
+    })
+ 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+.form-box{
+    background-color:rgb(219, 0, 0);
+}
+
+.forgot{
+    text-decoration: none;
+}
+
+@media screen and (max-width:992px){
+    .form-box{
+        width:100%;
+    }
+    .forgot{
+        margin-left:220px;
+    }
+    
+}
+@media screen and (min-width:992px){
+    .form-box{
+        width: 50%;
+        margin-left: 220px;
+    }
+    .forgot{
+        margin-left: 150px;
+    }
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffebeb;
+}
+
+
